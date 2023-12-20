@@ -1,0 +1,14 @@
+{{range .}}
+    <a
+        class="page__side-panel__item"
+        href="{{.Path}}"
+        hx-get="{{.ComponentPath}}"
+        hx-target="#page-content"
+        hx-swap="innerHTML"
+        hx-indicator="#page-content"
+        hx-push-url="{{.Path}}"
+        data-active="{{.Active}}"
+    >
+        <span>{{.Title}}</span>
+    </a>
+{{end}}

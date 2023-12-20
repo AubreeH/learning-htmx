@@ -1,0 +1,37 @@
+.loader, .htmx-request[data-show-loader="true"] {
+    display: grid;
+    place-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+    color: transparent;
+}
+
+.loader > *, .htmx-request[data-show-loader="true"] > * {
+    display: none;
+}
+
+.loader::before, .htmx-request[data-show-loader="true"]::before {
+    content: "";
+    position: absolute;
+    height: 1.5em;
+    width: 1.5em;
+
+    border: .25em solid #ccc;
+    border-top: .25em solid #888;
+    border-radius: 50%;
+
+    animation: spin 1s infinite cubic-bezier(0.5, 0.25, 0.5, 0.75);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

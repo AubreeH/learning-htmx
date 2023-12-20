@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta>
+        <meta charset="UTF-8">
+        <title>{{.TitleMeta}}</title>
+        <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+        {{range .Stylesheets}}
+            <link type="text/css" rel="stylesheet" href="assets/{{.}}"></link>
+        {{end}}
+        <meta name="htmx-config" content='{"includeIndicatorStyles": false}'></meta>
+        <link rel="shortcut icon" href="assets/favicon.ico">
+    </head>
+    <body>
+        <div class="page">
+            <div class="page__header">
+                <h1 
+                    id="page-title"
+                    hx-get="/component/page-title" 
+                    hx-swap="innerHTML"
+                    hx-trigger="page-changed-event from:body delay:20ms"
+                >
+                </h1>
+            </div>
+            <div
+                class="page__side-panel"
+                hx-get="/component/side-panel"
+                hx-swap="innerHtml"
+                hx-trigger="page-changed-event from:body delay:20ms"
+            >
+                
+            </div>
+            <div 
+                class="page__content" 
+                id="page-content"
+                hx-get="{{.PagePath}}"
+                hx-trigger="load"
+                hx-swap="innerHTML"
+                data-show-loader="true"
+            >
+            </div>
+        </div>
+    </body>
+</html>
